@@ -1,10 +1,10 @@
-Hi ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif)My name is Durul Dalkanat
+Hi 👋 My name is Durul Dalkanat
 ======================================================================================================================================
 
 Senior iOS Engineer
 ---------------------
 
-*   🌍  I'm based in Virginia
+*   🌍  I'm based in Virginia, 🇺🇸
 *   🤝  I'm open to collaborating on an interesting project
 *   ⚡  I love hiking, backpacking, and photography 📸
 
