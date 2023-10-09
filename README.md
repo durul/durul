@@ -20,8 +20,5 @@ Senior iOS Engineer
 ## 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=durul&theme=dark&no-frame=false&no-bg=false&margin-w=4)
 
-## 🐦 Latest Tweet
-[![](https://gtce.itsvg.in/api?username=duruldalkanat)](https://github.com/VishwaGauravIn/github-twitter-card-embed)
-
 ---
 [![](https://visitcount.itsvg.in/api?id=durul&icon=1&color=1)](https://visitcount.itsvg.in)
