@@ -1,6 +1,6 @@
 # Hi 👋 My name is Durul Dalkanat
 
-## Senior iOS Engineer
+## Senior SW
 
 - 🌍  I'm based in Virginia, 🇺🇸
 - 🤝  I'm open to collaborating on an interesting project
