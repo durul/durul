@@ -23,7 +23,7 @@ jobs:
           base: header, activity, community, repositories, metadata
           config_timezone: America/New_York
           config_display: large
-          config_theme: dark
+
           extras_css: |
             svg { background-color: #1F222E; }
           
