@@ -19,9 +19,13 @@ jobs:
           
           # Options
           user: durul
-          template: classic
+          template: terminal
           base: header, activity, community, repositories, metadata
           config_timezone: America/New_York
+          config_display: large
+          
+          # Dark theme colors matching Streak Stats
+          config_padding: 6%, 10%
           
           # Languages plugin
           plugin_languages: yes
