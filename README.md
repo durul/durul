@@ -2,22 +2,37 @@
 
 ## Senior engineer building end-to-end systems across mobile, spatial computing, and hardware-integrated platforms.
 
-- 🌍  I'm based in Virginia, 🇺🇸
-- 🤝  I'm open to collaborating on an interesting project
-- ⚡  I love hiking, backpacking, and photography 📸
+- 🌍  Based in **Virginia, USA** 🇺🇸
+- 🤝  Open to collaborating on **interesting projects**
+- ⚡  I love **hiking**, **backpacking**, and **photography** 📸
 
 <p align="left">
   <a href="https://github.com/durul/durul">
     <img src="https://komarev.com/ghpvc/?username=durul" alt="page views" />
   </a>
   <a href="https://about.me/durul">
-    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fjacobcolvin.com">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fabout.me%2Fdurul">
   </a>
   <a href="https://stackoverflow.com/users/893872/durul-dalkanat">
     <img alt="Stack Exchange reputation" src="https://img.shields.io/stackexchange/stackoverflow/r/893872?color=orange&label=reputation&logo=stackoverflow">
   </a>
   <a href="https://github.com/durul?tab=followers">
     <img alt="GitHub followers" src="https://img.shields.io/github/followers/durul?style=flat&logo=github">
+  </a>
+  <a href="https://www.linkedin.com/in/durul-d-b2a48a58/">
+    <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white">
+  </a>
+  <a href="https://www.twitter.com/duruldalkanat">
+    <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter&logoColor=white">
+  </a>
+  <a href="https://instagram.com/duruldalkanat">
+    <img alt="Instagram" src="https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white">
+  </a>
+  <a href="https://medium.com/@duruldalkanat">
+    <img alt="Medium" src="https://img.shields.io/badge/Medium-12100E?style=flat&logo=medium&logoColor=white">
+  </a>
+  <a href="http://www.youtube.com/user/duruldalkanat">
+    <img alt="YouTube" src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white">
   </a>
 </p>
 
