@@ -1,6 +1,6 @@
 ## Hi 👋 I am Durul Dalkanat
 
-Senior Software Engineer | Delivering High-Quality Mobile Solutions | Expert in Cross Platforms Frameworks & Mobile Architecture | 🧠 Vision Pro & Spatial Computing
+### Senior Software Engineer | Delivering High-Quality Mobile Solutions | Expert in Cross Platforms Frameworks & Mobile Architecture | 🧠 Vision Pro & Spatial Computing
 
 <br>
 
