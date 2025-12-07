@@ -10,20 +10,27 @@
 
 <div align="center">
 
-### 🔥 Streak Stats
+### � Comprehensive Metrics
 
-[![GitHub Streak](https://streak-stats.demolab.com/?user=durul&theme=monokai-metallian&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&mode=weekly)](https://git.io/streak-stats)
+![Metrics](https://raw.githubusercontent.com/durul/durul/main/github-metrics.svg)
 
-### 💻 GitHub Profile Stats
+### 🎯 Detailed Stats
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=durul&show_icons=true&include_all_commits=true&count_private=true&theme=react&hide_border=true&bg_color=1F222E&title_color=F85D7F&icon_color=F8D866&rank_icon=github&show=reviews,prs_merged,prs_merged_percentage" alt="durul's GitHub Stats" height="192px"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=durul&langs_count=10&layout=compact&theme=react&hide_border=true&bg_color=1F222E&title_color=F85D7F&icon_color=F8D866&hide=Jupyter%20Notebook,Roff&exclude_repo=durul,durul.github.io" alt="durul's Top Languages" height="192px"/>
-</p>
-
-### 📈 Contribution Graph
-
-[![durul's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=durul&theme=react-dark&hide_border=true&area=true&custom_title=Contribution%20Graph)](https://github.com/ashutosh00710/github-readme-activity-graph)
+<table>
+  <tr>
+    <td>
+      <img src="https://github-readme-stats.vercel.app/api?username=durul&show_icons=true&theme=react&hide_border=true&bg_color=1F222E&title_color=F85D7F&icon_color=F8D866&include_all_commits=true&count_private=true" alt="GitHub Stats" />
+    </td>
+    <td>
+      <img src="https://streak-stats.demolab.com/?user=durul&theme=react&hide_border=true&background=1F222E&ring=F85D7F&fire=F85D7F&currStreakLabel=F85D7F" alt="GitHub Streak" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=durul&theme=react-dark&hide_border=true&area=true&bg_color=1F222E&color=F85D7F&line=F8D866&point=FFFFFF" alt="Contribution Graph" />
+    </td>
+  </tr>
+</table>
 
 </div>
 
