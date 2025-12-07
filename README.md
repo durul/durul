@@ -1,6 +1,6 @@
-# Hi 👋 My name is Durul Dalkanat
+# Hi 👋 I am Durul Dalkanat
 
-## Senior SW
+## Senior engineer building end-to-end systems across mobile, spatial computing, and hardware-integrated platforms.
 
 - 🌍  I'm based in Virginia, 🇺🇸
 - 🤝  I'm open to collaborating on an interesting project
@@ -25,13 +25,12 @@
 
 <div align="center">
 
-### � Comprehensive Metrics
-
-![Metrics](https://raw.githubusercontent.com/durul/durul/main/github-metrics.svg)
-
-### 🎯 Detailed Stats
-
 <table>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="https://raw.githubusercontent.com/durul/durul/main/github-metrics.svg" alt="GitHub Metrics" />
+    </td>
+  </tr>
   <tr>
     <td colspan="2" align="center">
       <img src="https://streak-stats.demolab.com/?user=durul&theme=react&hide_border=true&background=1F222E&ring=F85D7F&fire=F85D7F&currStreakLabel=F85D7F" alt="GitHub Streak" />
