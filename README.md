@@ -6,6 +6,21 @@
 - 🤝  I'm open to collaborating on an interesting project
 - ⚡  I love hiking, backpacking, and photography 📸
 
+<p align="left">
+  <a href="https://github.com/durul/durul">
+    <img src="https://komarev.com/ghpvc/?username=durul" alt="page views" />
+  </a>
+  <a href="https://about.me/durul">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fjacobcolvin.com">
+  </a>
+  <a href="https://stackoverflow.com/users/893872/durul-dalkanat">
+    <img alt="Stack Exchange reputation" src="https://img.shields.io/stackexchange/stackoverflow/r/893872?color=orange&label=reputation&logo=stackoverflow">
+  </a>
+  <a href="https://github.com/durul?tab=followers">
+    <img alt="GitHub followers" src="https://img.shields.io/github/followers/durul?style=flat&logo=github">
+  </a>
+</p>
+
 ## 📊 GitHub Stats and Activity
 
 <div align="center">
@@ -18,10 +33,7 @@
 
 <table>
   <tr>
-    <td>
-      <img src="https://github-readme-stats.vercel.app/api?username=durul&show_icons=true&theme=react&hide_border=true&bg_color=1F222E&title_color=F85D7F&icon_color=F8D866&include_all_commits=true&count_private=true" alt="GitHub Stats" />
-    </td>
-    <td>
+    <td colspan="2" align="center">
       <img src="https://streak-stats.demolab.com/?user=durul&theme=react&hide_border=true&background=1F222E&ring=F85D7F&fire=F85D7F&currStreakLabel=F85D7F" alt="GitHub Streak" />
     </td>
   </tr>
