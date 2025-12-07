@@ -23,10 +23,10 @@ jobs:
           base: header, activity, community, repositories, metadata
           config_timezone: America/New_York
           config_display: large
-
+          config_theme: dark
           extras_css: |
             svg { background-color: #1F222E; }
-          
+
           # Dark theme colors matching Streak Stats
           config_padding: 6%, 10%
           
@@ -36,8 +36,9 @@ jobs:
           plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_limit: 8
-          plugin_languages_indepth: yes
-          plugin_languages_details: lines, percentage
+          plugin_languages_recent_categories: markup, programming
+          plugin_languages_recent_days: 14
+          plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
           plugin_languages_threshold: 0%
           
