@@ -39,8 +39,8 @@
   </tr>
   <tr>
     <td colspan="2" align="center">
-      <a href="https://git.io/streak-stats">
-        <img src="https://streak-stats.demolab.com/?user=durul&theme=react&hide_border=true&background=1F222E&ring=F85D7F&fire=F85D7F&currStreakLabel=F85D7F&v=2" alt="GitHub Streak" />
+      <a href="https://github.com/Pranesh-2005/github-readme-stats-fast">
+        <img src="https://github-readme-stats-fast.vercel.app/api/streak?username=durul&theme=react&hide_border=true&background=1F222E&ring=F85D7F&fire=F85D7F&currStreakLabel=F85D7F" alt="GitHub Streak" />
       </a>
     </td>
   </tr>
