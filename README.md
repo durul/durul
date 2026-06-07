@@ -29,6 +29,43 @@
 
 ---
 
+## 🌍 Open Source Contributions
+
+I contribute across Apple platforms, visionOS, Swift, developer tooling, AI/ML infrastructure, spatial computing, and documentation-heavy open source projects.
+
+### Notable external contributions
+
+| Project                                                                                                           | Area                                | Contribution                                                                 |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------- |
+| [Simbastack-hq/framedex](https://github.com/Simbastack-hq/framedex)                                               | Apple Photos / CLI / media indexing | Added `fdx-photos` for indexing videos directly from an Apple Photos library |
+| [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)                                                             | CLI / sandbox diagnostics           | Added sandbox `doctor` command for host/runtime health checks                |
+| [tddworks/SkillsManager](https://github.com/tddworks/SkillsManager)                                               | Swift / macOS tooling / security    | Added local `.app` build script and fixed symlink traversal risk             |
+| [vlr-code/dictly](https://github.com/vlr-code/dictly)                                                             | macOS / audio / accessibility       | Added diagnostics, fixed audio device rebinding, improved hotkey recording   |
+| [apple/ml-sharp](https://github.com/apple/ml-sharp)                                                               | Spatial computing / Vision Pro docs | Added Vision Pro integration guidance for SHARP 3D Gaussian output           |
+| [SouthwestAir/Vision-Pro-Blender-Live-Streamer](https://github.com/SouthwestAir/Vision-Pro-Blender-Live-Streamer) | visionOS / Blender streaming        | UI, README, status throttling, and AppModel refactors                        |
+| [Jaennaet/pISSStream](https://github.com/Jaennaet/pISSStream)                                                     | visionOS / immersive UI             | Added visionOS support and immersive experience improvements                 |
+| [dkhamsing/open-source-ios-apps](https://github.com/dkhamsing/open-source-ios-apps)                               | iOS / visionOS catalog              | Added pISSStream to open-source iOS / visionOS project listings              |
+| [nv-tlabs/lyra](https://github.com/nv-tlabs/lyra)                                                                 | AI / ML infrastructure docs         | Added RunPod Lyra-2 installation runbook                                     |
+| [LaurieWired/Malimite](https://github.com/LaurieWired/Malimite)                                                   | Reverse engineering tooling docs    | Expanded README with architecture and usage details                          |
+
+<details>
+<summary>More external projects I have contributed to</summary>
+
+<br>
+
+- [Gold240sx/Skills](https://github.com/Gold240sx/Skills)
+- [tddworks/baguette](https://github.com/tddworks/baguette)
+- [TomBadash/Mouser](https://github.com/TomBadash/Mouser)
+- [tomkrikorian/awesome-visionOS](https://github.com/tomkrikorian/awesome-visionOS)
+- [Nutlope/logocreator](https://github.com/Nutlope/logocreator)
+- [saulsharma/netflix-ui](https://github.com/saulsharma/netflix-ui)
+- [khaled-0/Syncara](https://github.com/khaled-0/Syncara)
+- [Safal-Shrestha-SS/audio_transcribe](https://github.com/Safal-Shrestha-SS/audio_transcribe)
+- [JideGuru/FlutterFoodybite](https://github.com/JideGuru/FlutterFoodybite)
+- [JakeLin/SwiftLanguageWeather](https://github.com/JakeLin/SwiftLanguageWeather)
+
+</details>
+
 ## 🔥 Contribution Streak
 
 <div align="center">
