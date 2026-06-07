@@ -57,7 +57,6 @@ I contribute across Apple platforms, visionOS, Swift, developer tooling, AI/ML i
 - [tddworks/baguette](https://github.com/tddworks/baguette)
 - [TomBadash/Mouser](https://github.com/TomBadash/Mouser)
 - [tomkrikorian/awesome-visionOS](https://github.com/tomkrikorian/awesome-visionOS)
-- [Nutlope/logocreator](https://github.com/Nutlope/logocreator)
 - [saulsharma/netflix-ui](https://github.com/saulsharma/netflix-ui)
 - [khaled-0/Syncara](https://github.com/khaled-0/Syncara)
 - [Safal-Shrestha-SS/audio_transcribe](https://github.com/Safal-Shrestha-SS/audio_transcribe)
