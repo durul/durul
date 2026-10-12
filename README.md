@@ -22,8 +22,8 @@
 
 <div align="center">
 
-<img src="https://github-readme-stats-fast.vercel.app/api?username=durul&show_icons=true&theme=react&hide_border=true&bg_color=1F222E&title_color=F85D7F&icon_color=F8D866" alt="GitHub Stats" height="180"/>
-<img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=durul&layout=compact&theme=react&hide_border=true&bg_color=1F222E&title_color=F85D7F" alt="Top Languages" height="180"/>
+<img src="./github-stats.svg" alt="GitHub Stats" height="180"/>
+<img src="./github-top-langs.svg" alt="Top Languages" height="180"/>
 
 </div>
 
@@ -97,9 +97,7 @@ Platform and tooling bugs I have hit, reduced to a reproducible case, and report
 
 <div align="center">
 
-<a href="https://github.com/ryo-ma/github-profile-trophy">
-  <img src="https://github-trophies.vercel.app/?username=durul&theme=darkhub&no-frame=true&no-bg=true&margin-w=4&column=7" alt="GitHub Trophies"/>
-</a>
+<img src="./github-trophies.svg" alt="GitHub Trophies"/>
 
 </div>
 

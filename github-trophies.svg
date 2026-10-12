@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="250" viewBox="0 0 830 250" role="img" aria-label="GitHub Trophies">
+  <title>durul's GitHub Trophies</title>
+  <style>
+    text { font-family: 'Segoe UI', Ubuntu, -apple-system, 'Helvetica Neue', sans-serif; text-anchor: middle; }
+    .title { font-size: 12px; font-weight: 600; fill: #C9CCD6; }
+    .rank { font-weight: 800; fill: #1F222E; }
+    .name { font-size: 10.5px; font-weight: 600; fill: #FFFFFF; }
+    .caption { font-size: 10px; fill: #9E9E9E; }
+  </style>
+  <rect width="830" height="250" rx="6" fill="#1F222E"/>
+  <g transform="translate(12, 12)">
+    <title>MultiLanguage: Rainbow Lang User (15 languages)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">MultiLanguage</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F85D7F"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#F85D7F" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#F85D7F"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F85D7F"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">★</text>
+    <text x="55" y="78" class="name">Rainbow Lang User</text>
+    <text x="55" y="92" class="caption">15 languages</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="70.0" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(128, 12)">
+    <title>LongTimeUser: Village Elder (14 years)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">LongTimeUser</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F85D7F"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#F85D7F" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#F85D7F"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F85D7F"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">★</text>
+    <text x="55" y="78" class="name">Village Elder</text>
+    <text x="55" y="92" class="caption">14 years</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="70.0" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(244, 12)">
+    <title>Stars: High Stargazer (701 stars)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Stars</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F8D866"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#F8D866" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#F8D866"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F8D866"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">SS</text>
+    <text x="55" y="78" class="name">High Stargazer</text>
+    <text x="55" y="92" class="caption">701 stars</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="0.1" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(360, 12)">
+    <title>Commits: Deep Committer (2.0k commits)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Commits</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F8D866"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#F8D866" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#F8D866"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F8D866"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">SS</text>
+    <text x="55" y="78" class="name">Deep Committer</text>
+    <text x="55" y="92" class="caption">2.0k commits</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="0.6" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(476, 12)">
+    <title>Followers: Hyper Celebrity (317 followers)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Followers</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F8D866"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#F8D866" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#F8D866"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F8D866"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">S</text>
+    <text x="55" y="78" class="name">Hyper Celebrity</text>
+    <text x="55" y="92" class="caption">317 followers</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="40.9" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(592, 12)">
+    <title>Experience: Master Dev (14 years)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Experience</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F8D866"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#F8D866" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#F8D866"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F8D866"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">S</text>
+    <text x="55" y="78" class="name">Master Dev</text>
+    <text x="55" y="92" class="caption">14 years</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="60.7" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(708, 12)">
+    <title>Issues: Hyper Issuer (55 issues)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Issues</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#7DD3FC"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#7DD3FC" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#7DD3FC"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#7DD3FC"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">AA</text>
+    <text x="55" y="78" class="name">Hyper Issuer</text>
+    <text x="55" y="92" class="caption">55 issues</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="7.0" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(12, 128)">
+    <title>PullRequest: Hyper Puller (75 PRs)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">PullRequest</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#7DD3FC"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#7DD3FC" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#7DD3FC"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#7DD3FC"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">AA</text>
+    <text x="55" y="78" class="name">Hyper Puller</text>
+    <text x="55" y="92" class="caption">75 PRs</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="35.0" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(128, 128)">
+    <title>Repositories: High Repo Creator (26 repos)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Repositories</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#7DD3FC"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#7DD3FC" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#7DD3FC"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#7DD3FC"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">A</text>
+    <text x="55" y="78" class="name">High Repo Creator</text>
+    <text x="55" y="92" class="caption">26 repos</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="42.0" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+  <g transform="translate(244, 128)">
+    <title>Reviews: Unknown (0 reviews)</title>
+    <rect width="110" height="110" rx="8" fill="#272B3A"/>
+    <text x="55" y="17" class="title">Reviews</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#5B6275"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="#5B6275" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="#5B6275"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#5B6275"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">?</text>
+    <text x="55" y="78" class="name">Unknown</text>
+    <text x="55" y="92" class="caption">0 reviews</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="20" y="99" width="0.0" height="3" rx="1.5" fill="#F85D7F"/>
+  </g>
+</svg>

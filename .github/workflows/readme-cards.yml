@@ -1,6 +1,6 @@
 name: README Cards
 on:
-  # Refresh streak and activity graph every 6 hours
+  # Refresh the README cards every 6 hours
   schedule: [{cron: "30 */6 * * *"}]
   workflow_dispatch:
   push:
@@ -19,17 +19,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate streak and activity cards
+      - name: Generate README cards
         run: node .github/scripts/readme-cards.mjs
         env:
           GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
           GH_USER: durul
 
+      # Each card is written only after its data loaded, so a partial failure
+      # still commits the cards that succeeded and keeps the rest unchanged.
       - name: Commit changes
+        if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add github-streak.svg github-activity.svg
+          git add github-stats.svg github-top-langs.svg github-streak.svg github-activity.svg github-trophies.svg
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Update README cards - [Skip GitHub Action]"
           # The Metrics workflow may push at the same time; rebase and retry.

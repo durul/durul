@@ -1,5 +1,6 @@
-// Generates github-streak.svg and github-activity.svg from the GitHub GraphQL API,
-// so the README does not depend on third-party Vercel instances at page load.
+// Generates the README cards (stats, top languages, streak, activity graph and
+// trophies) from the GitHub GraphQL API, so the README does not depend on
+// third-party Vercel instances at page load.
 import { writeFileSync } from "node:fs";
 
 const TOKEN = process.env.GH_TOKEN;
@@ -10,6 +11,7 @@ if (!TOKEN) throw new Error("GH_TOKEN is required");
 
 const C = {
   bg: "#1F222E",
+  tile: "#272B3A",
   accent: "#F85D7F",
   line: "#F8D866",
   text: "#FFFFFF",
@@ -19,15 +21,23 @@ const C = {
 };
 const FONT = "'Segoe UI', Ubuntu, -apple-system, 'Helvetica Neue', sans-serif";
 
-async function gql(query, variables = {}) {
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: { Authorization: `bearer ${TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ query, variables }),
-  });
-  const json = await res.json();
-  if (!res.ok || json.errors) throw new Error(JSON.stringify(json.errors || json));
-  return json.data;
+// Retries transient API failures (502s and timeouts are common on large queries).
+async function gql(query, variables = {}, attempts = 3) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const res = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: { Authorization: `bearer ${TOKEN}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ query, variables }),
+      });
+      const json = await res.json();
+      if (!res.ok || json.errors) throw new Error(`${res.status} ${JSON.stringify(json.errors || json)}`);
+      return json.data;
+    } catch (error) {
+      if (attempt >= attempts) throw error;
+      await new Promise((resolve) => setTimeout(resolve, attempt * 5000));
+    }
+  }
 }
 
 async function fetchDays() {
@@ -57,7 +67,69 @@ async function fetchDays() {
     .map(([date, count]) => ({ date, count }));
 }
 
-function computeStats(days) {
+// Stats, languages and trophies count public activity only, like the hosted
+// cards they replace (those ran with a token that could not see private repos).
+async function fetchProfile() {
+  const yearStart = `${new Date().getUTCFullYear()}-01-01T00:00:00Z`;
+  const data = await gql(`query($login: String!, $prQuery: String!, $issueQuery: String!, $yearStart: DateTime!) {
+    prs: search(query: $prQuery, type: ISSUE) { issueCount }
+    issues: search(query: $issueQuery, type: ISSUE) { issueCount }
+    user(login: $login) {
+      name createdAt
+      followers { totalCount }
+      organizations(first: 1) { totalCount }
+      repositoriesContributedTo(first: 1, privacy: PUBLIC, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) { totalCount }
+      thisYear: contributionsCollection(from: $yearStart) {
+        commitContributionsByRepository(maxRepositories: 100) { repository { isPrivate } contributions { totalCount } }
+      }
+      lastYear: contributionsCollection {
+        totalCommitContributions restrictedContributionsCount totalPullRequestReviewContributions
+      }
+    }
+  }`, {
+    login: USER,
+    prQuery: `author:${USER} is:pr is:public`,
+    issueQuery: `author:${USER} is:issue is:public`,
+    yearStart,
+  });
+
+  const repos = [];
+  let after = null;
+  do {
+    const { user } = await gql(`query($login: String!, $after: String) { user(login: $login) {
+      repositories(first: 100, after: $after, ownerAffiliations: OWNER, privacy: PUBLIC) {
+        pageInfo { hasNextPage endCursor }
+        nodes {
+          isFork stargazerCount createdAt
+          languages(first: 10, orderBy: { field: SIZE, direction: DESC }) { edges { size node { name color } } }
+        }
+      }
+    } }`, { login: USER, after });
+    repos.push(...user.repositories.nodes);
+    after = user.repositories.pageInfo.hasNextPage ? user.repositories.pageInfo.endCursor : null;
+  } while (after);
+
+  const u = data.user;
+  return {
+    name: u.name || USER,
+    createdAt: u.createdAt,
+    followers: u.followers.totalCount,
+    orgs: u.organizations.totalCount,
+    contributedTo: u.repositoriesContributedTo.totalCount,
+    prs: data.prs.issueCount,
+    issues: data.issues.issueCount,
+    commitsThisYear: u.thisYear.commitContributionsByRepository
+      .filter((r) => !r.repository.isPrivate)
+      .reduce((sum, r) => sum + r.contributions.totalCount, 0),
+    // The trophy card counts private contributions too, as restricted contributions.
+    commitsLastYear: u.lastYear.totalCommitContributions + u.lastYear.restrictedContributionsCount,
+    reviews: u.lastYear.totalPullRequestReviewContributions,
+    stars: repos.reduce((sum, r) => sum + r.stargazerCount, 0),
+    repos,
+  };
+}
+
+function computeStreak(days) {
   const total = days.reduce((sum, d) => sum + d.count, 0);
   const first = days.find((d) => d.count > 0)?.date ?? days[0].date;
 
@@ -204,8 +276,235 @@ function activitySvg(days) {
 `;
 }
 
+// Same rank as github-readme-stats: weighted CDFs of each stat mapped to S..C.
+function calculateRank({ commits, prs, issues, reviews, stars, followers }) {
+  const expCdf = (x) => 1 - 2 ** -x;
+  const logNormalCdf = (x) => x / (1 + x);
+  const score = 2 * expCdf(commits / 250) + 3 * expCdf(prs / 50) + expCdf(issues / 25) + expCdf(reviews / 2) +
+    4 * logNormalCdf(stars / 50) + logNormalCdf(followers / 10);
+  const percentile = (1 - score / 12) * 100;
+  const thresholds = [1, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100];
+  const levels = ["S", "A+", "A", "A-", "B+", "B", "B-", "C+", "C"];
+  return { level: levels[thresholds.findIndex((t) => percentile <= t)], percentile };
+}
+
+// Octicons (MIT, GitHub).
+const ICONS = {
+  star: "M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z",
+  history: "M1.643 3.143L.427 1.927A.25.25 0 000 2.104V5.75c0 .138.112.25.25.25h3.646a.25.25 0 00.177-.427L2.715 4.215a6.5 6.5 0 11-1.18 4.458.75.75 0 10-1.493.154 8.001 8.001 0 101.6-5.684zM7.75 4a.75.75 0 01.75.75v2.992l2.028.812a.75.75 0 01-.557 1.392l-2.5-1A.75.75 0 017 8.25v-3.5A.75.75 0 017.75 4z",
+  pr: "M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z",
+  issue: "M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm9 3a1 1 0 11-2 0 1 1 0 012 0zm-.25-6.25a.75.75 0 00-1.5 0v3.5a.75.75 0 001.5 0v-3.5z",
+  repo: "M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z",
+};
+
+function statsSvg(p) {
+  const W = 467, H = 195;
+  const rank = calculateRank({
+    commits: p.commitsThisYear, prs: p.prs, issues: p.issues, reviews: p.reviews, stars: p.stars, followers: p.followers,
+  });
+  const rows = [
+    [ICONS.star, "Total Stars Earned:", p.stars],
+    [ICONS.history, `Total Commits (${new Date().getUTCFullYear()}):`, p.commitsThisYear],
+    [ICONS.pr, "Total PRs:", p.prs],
+    [ICONS.issue, "Total Issues:", p.issues],
+    [ICONS.repo, "Contributed to (last year):", p.contributedTo],
+  ].map(([icon, label, value], i) => `<g transform="translate(25, ${55 + i * 25})">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" fill="${C.line}" d="${icon}"/></svg>
+    <text x="25" y="12.5" class="stat">${label}</text>
+    <text x="219" y="12.5" class="stat">${num(value)}</text>
+  </g>`);
+  const circumference = 2 * Math.PI * 40;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(p.name)}'s GitHub Stats">
+  <title>${esc(p.name)}'s GitHub Stats, Rank: ${rank.level}</title>
+  <style>
+    text { font-family: ${FONT}; }
+    .header { font-size: 18px; font-weight: 600; fill: ${C.accent}; }
+    .stat { font-size: 14px; font-weight: 600; fill: ${C.text}; }
+    .rank { font-size: 24px; font-weight: 800; fill: ${C.text}; text-anchor: middle; }
+  </style>
+  <rect width="${W}" height="${H}" rx="4.5" fill="${C.bg}"/>
+  <text x="25" y="35" class="header">${esc(p.name)}'s GitHub Stats</text>
+  ${rows.join("\n  ")}
+  <g transform="translate(380.5, 110.5)">
+    <circle r="40" fill="none" stroke="${C.accent}" stroke-width="6" opacity="0.2"/>
+    <circle r="40" fill="none" stroke="${C.accent}" stroke-width="6" stroke-linecap="round" opacity="0.8" transform="rotate(-90)"
+      stroke-dasharray="${circumference.toFixed(2)}" stroke-dashoffset="${((rank.percentile / 100) * circumference).toFixed(2)}"/>
+    <text y="9" class="rank">${rank.level}</text>
+  </g>
+</svg>
+`;
+}
+
+// Same as github-readme-stats top-langs: bytes across owned, non-fork repos.
+function topLanguages(repos, count = 6) {
+  const sizes = new Map();
+  for (const repo of repos.filter((r) => !r.isFork)) {
+    for (const { size, node } of repo.languages.edges) {
+      const lang = sizes.get(node.name) ?? { name: node.name, color: node.color ?? "#858585", size: 0 };
+      lang.size += size;
+      sizes.set(node.name, lang);
+    }
+  }
+  const top = [...sizes.values()].sort((a, b) => b.size - a.size).slice(0, count);
+  const total = top.reduce((sum, l) => sum + l.size, 0);
+  return top.map((l) => ({ ...l, percent: (l.size / total) * 100 }));
+}
+
+function langsSvg(langs) {
+  const rows = Math.ceil(langs.length / 2);
+  const W = 300, H = 90 + rows * 25;
+  let offset = 0;
+  const bar = langs.map((l) => {
+    const width = (l.percent / 100) * 250;
+    const rect = `<rect x="${offset.toFixed(2)}" width="${width.toFixed(2)}" height="8" fill="${l.color}"/>`;
+    offset += width;
+    return rect;
+  });
+  const items = langs.map((l, i) => {
+    const x = 25 + Math.floor(i / rows) * 150, y = 80 + (i % rows) * 25;
+    return `<circle cx="${x + 5}" cy="${y + 6}" r="5" fill="${l.color}"/>
+  <text x="${x + 15}" y="${y + 10}" class="lang">${esc(l.name)} ${l.percent.toFixed(2)}%</text>`;
+  });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Most Used Languages">
+  <title>Most Used Languages: ${langs.map((l) => `${esc(l.name)} ${l.percent.toFixed(2)}%`).join(", ")}</title>
+  <style>
+    text { font-family: ${FONT}; }
+    .header { font-size: 18px; font-weight: 600; fill: ${C.accent}; }
+    .lang { font-size: 11px; font-weight: 400; fill: ${C.text}; }
+  </style>
+  <defs><clipPath id="bar"><rect width="250" height="8" rx="5"/></clipPath></defs>
+  <rect width="${W}" height="${H}" rx="4.5" fill="${C.bg}"/>
+  <text x="25" y="35" class="header">Most Used Languages</text>
+  <g transform="translate(25, 55)" clip-path="url(#bar)">${bar.join("")}</g>
+  ${items.join("\n  ")}
+</svg>
+`;
+}
+
+// Rank names and thresholds from ryo-ma/github-profile-trophy.
+const TROPHY_RANKS = ["SECRET", "SSS", "SS", "S", "AAA", "AA", "A", "B", "C", "?"];
+const ladder = (names, mins) => ["SSS", "SS", "S", "AAA", "AA", "A", "B", "C"].map((rank, i) => [rank, names[i], mins[i]]);
+
+function trophy(title, score, caption, conditions, hidden = false) {
+  const i = conditions.findIndex(([, , min]) => score >= min);
+  const [rank, name] = i >= 0 ? conditions[i] : ["?", "Unknown"];
+  // Progress toward the next rank; full once the top rank is reached.
+  const floor = i >= 0 ? conditions[i][2] : 0;
+  const next = i === 0 ? null : conditions[(i < 0 ? conditions.length : i) - 1][2];
+  const progress = next === null ? 1 : Math.min(1, (score - floor) / (next - floor));
+  return { title, rank, name, caption, progress, hidden };
+}
+
+function buildTrophies(p) {
+  const abbr = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n));
+  // Trophies look at the 50 most starred repos for languages and account age.
+  const top = [...p.repos].sort((a, b) => b.stargazerCount - a.stargazerCount).slice(0, 50);
+  const languages = new Set(top.flatMap((r) => r.languages.edges.slice(0, 2).map((e) => e.node.name))).size;
+  const earliest = top.reduce((min, r) => (r.createdAt < min ? r.createdAt : min), p.createdAt);
+  const age = Date.now() - new Date(earliest).getTime();
+  const years = new Date(age).getUTCFullYear() - 1970;
+  const firstYear = new Date(earliest).getUTCFullYear();
+
+  const list = [
+    trophy("Stars", p.stars, `${abbr(p.stars)} stars`, ladder(
+      ["Super Stargazer", "High Stargazer", "Stargazer", "Super Star", "High Star", "You are a Star", "Middle Star", "First Star"],
+      [2000, 700, 200, 100, 50, 30, 10, 1])),
+    trophy("Commits", p.commitsLastYear, `${abbr(p.commitsLastYear)} commits`, ladder(
+      ["God Committer", "Deep Committer", "Super Committer", "Ultra Committer", "Hyper Committer", "High Committer", "Middle Committer", "First Commit"],
+      [4000, 2000, 1000, 500, 200, 100, 10, 1])),
+    trophy("Followers", p.followers, `${abbr(p.followers)} followers`, ladder(
+      ["Super Celebrity", "Ultra Celebrity", "Hyper Celebrity", "Famous User", "Active User", "Dynamic User", "Many Friends", "First Friend"],
+      [1000, 400, 200, 100, 50, 20, 10, 1])),
+    trophy("Issues", p.issues, `${abbr(p.issues)} issues`, ladder(
+      ["God Issuer", "Deep Issuer", "Super Issuer", "Ultra Issuer", "Hyper Issuer", "High Issuer", "Middle Issuer", "First Issue"],
+      [1000, 500, 200, 100, 50, 20, 10, 1])),
+    trophy("PullRequest", p.prs, `${abbr(p.prs)} PRs`, ladder(
+      ["God Puller", "Deep Puller", "Super Puller", "Ultra Puller", "Hyper Puller", "High Puller", "Middle Puller", "First Pull"],
+      [1000, 500, 200, 100, 50, 20, 10, 1])),
+    trophy("Repositories", p.repos.length, `${p.repos.length} repos`, ladder(
+      ["God Repo Creator", "Deep Repo Creator", "Super Repo Creator", "Ultra Repo Creator", "Hyper Repo Creator", "High Repo Creator", "Middle Repo Creator", "First Repository"],
+      [50, 45, 40, 35, 30, 20, 10, 1])),
+    trophy("Reviews", p.reviews, `${abbr(p.reviews)} reviews`, ladder(
+      ["God Reviewer", "Deep Reviewer", "Super Reviewer", "Ultra Reviewer", "Hyper Reviewer", "Active Reviewer", "Intermediate Reviewer", "New Reviewer"],
+      [70, 57, 45, 30, 20, 8, 3, 1])),
+  ];
+  const allSuper = list.every((t) => t.rank.startsWith("S")) ? 1 : 0;
+  list.push(
+    trophy("AllSuperRank", allSuper, "All S Rank", [["SECRET", "S Rank Hacker", 1]], true),
+    trophy("MultiLanguage", languages, `${languages} languages`, [["SECRET", "Rainbow Lang User", 10]], true),
+    trophy("LongTimeUser", years, `${years} years`, [["SECRET", "Village Elder", 10]], true),
+    trophy("AncientUser", firstYear <= 2010 ? 1 : 0, "Before 2010", [["SECRET", "Ancient User", 1]], true),
+    trophy("OGUser", firstYear <= 2008 ? 1 : 0, "Joined 2008", [["SECRET", "OG User", 1]], true),
+    trophy("Joined2020", firstYear === 2020 ? 1 : 0, "Joined 2020", [["SECRET", "Everything started...", 1]], true),
+    trophy("Organizations", p.orgs, `${p.orgs} orgs`, [["SECRET", "Jack of all Trades", 3]], true),
+    // Measured in units of 100 days.
+    trophy("Experience", Math.floor(age / 86_400_000 / 100), `${years} years`, ladder(
+      ["Seasoned Veteran", "Grandmaster", "Master Dev", "Expert Dev", "Experienced Dev", "Intermediate Dev", "Junior Dev", "Newbie"],
+      [70, 55, 40, 28, 18, 11, 6, 2])),
+  );
+  return list
+    .filter((t) => !t.hidden || t.rank !== "?")
+    .sort((a, b) => TROPHY_RANKS.indexOf(a.rank) - TROPHY_RANKS.indexOf(b.rank));
+}
+
+function rankColor(rank) {
+  if (rank === "SECRET") return C.accent;
+  if (rank.startsWith("S")) return C.line;
+  if (rank.startsWith("A")) return "#7DD3FC";
+  if (rank === "?") return "#5B6275";
+  return "#C0C7D6";
+}
+
+function trophiesSvg(list) {
+  const T = 110, GAP = 6, PAD = 12;
+  const cols = Math.min(7, list.length), rows = Math.ceil(list.length / cols);
+  const W = PAD * 2 + cols * T + (cols - 1) * GAP, H = PAD * 2 + rows * T + (rows - 1) * GAP;
+  const tiles = list.map((t, i) => {
+    const x = PAD + (i % cols) * (T + GAP), y = PAD + Math.floor(i / cols) * (T + GAP);
+    const color = rankColor(t.rank);
+    const letter = t.rank === "SECRET" ? "★" : t.rank;
+    const fit = t.name.length > 17 ? ` textLength="100" lengthAdjust="spacingAndGlyphs"` : "";
+    return `<g transform="translate(${x}, ${y})">
+    <title>${t.title}: ${esc(t.name)} (${t.caption})</title>
+    <rect width="${T}" height="${T}" rx="8" fill="${C.tile}"/>
+    <text x="55" y="17" class="title">${t.title}</text>
+    <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="${color}"/>
+    <path d="M40,27 H34 C34,36 37,40 42,42 M70,27 H76 C76,36 73,40 68,42" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="52.5" y="50" width="5" height="7" fill="${color}"/>
+    <rect x="45" y="57" width="20" height="5" rx="1.5" fill="${color}"/>
+    <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: ${letter.length > 2 ? 10 : 12}px">${letter}</text>
+    <text x="55" y="78" class="name"${fit}>${esc(t.name)}</text>
+    <text x="55" y="92" class="caption">${t.caption}</text>
+    <rect x="20" y="99" width="70" height="3" rx="1.5" fill="${C.grid}"/>
+    <rect x="20" y="99" width="${(70 * t.progress).toFixed(1)}" height="3" rx="1.5" fill="${C.accent}"/>
+  </g>`;
+  });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="GitHub Trophies">
+  <title>${esc(USER)}'s GitHub Trophies</title>
+  <style>
+    text { font-family: ${FONT}; text-anchor: middle; }
+    .title { font-size: 12px; font-weight: 600; fill: #C9CCD6; }
+    .rank { font-weight: 800; fill: ${C.bg}; }
+    .name { font-size: 10.5px; font-weight: 600; fill: ${C.text}; }
+    .caption { font-size: 10px; fill: ${C.muted}; }
+  </style>
+  <rect width="${W}" height="${H}" rx="6" fill="${C.bg}"/>
+  ${tiles.join("\n  ")}
+</svg>
+`;
+}
+
 const days = await fetchDays();
-const stats = computeStats(days);
-writeFileSync(`${OUT_DIR}/github-streak.svg`, streakSvg(stats));
+const streak = computeStreak(days);
+writeFileSync(`${OUT_DIR}/github-streak.svg`, streakSvg(streak));
 writeFileSync(`${OUT_DIR}/github-activity.svg`, activitySvg(days));
-console.log(`total=${stats.total} current=${stats.current.length} longest=${stats.longest.length} days=${days.length}`);
+
+const profile = await fetchProfile();
+writeFileSync(`${OUT_DIR}/github-stats.svg`, statsSvg(profile));
+writeFileSync(`${OUT_DIR}/github-top-langs.svg`, langsSvg(topLanguages(profile.repos)));
+const trophies = buildTrophies(profile);
+writeFileSync(`${OUT_DIR}/github-trophies.svg`, trophiesSvg(trophies));
+
+console.log(`streak: total=${streak.total} current=${streak.current.length} longest=${streak.longest.length}`);
+console.log(`stats: stars=${profile.stars} commits=${profile.commitsThisYear} prs=${profile.prs} issues=${profile.issues} contributedTo=${profile.contributedTo}`);
+console.log(`trophies: ${trophies.map((t) => `${t.title}=${t.rank}`).join(" ")}`);

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="165" viewBox="0 0 300 165" role="img" aria-label="Most Used Languages">
+  <title>Most Used Languages: Limbo 47.28%, Ruby 36.22%, Objective-C 12.87%, Swift 2.48%, C++ 0.63%, CMake 0.52%</title>
+  <style>
+    text { font-family: 'Segoe UI', Ubuntu, -apple-system, 'Helvetica Neue', sans-serif; }
+    .header { font-size: 18px; font-weight: 600; fill: #F85D7F; }
+    .lang { font-size: 11px; font-weight: 400; fill: #FFFFFF; }
+  </style>
+  <defs><clipPath id="bar"><rect width="250" height="8" rx="5"/></clipPath></defs>
+  <rect width="300" height="165" rx="4.5" fill="#1F222E"/>
+  <text x="25" y="35" class="header">Most Used Languages</text>
+  <g transform="translate(25, 55)" clip-path="url(#bar)"><rect x="0.00" width="118.20" height="8" fill="#858585"/><rect x="118.20" width="90.55" height="8" fill="#701516"/><rect x="208.75" width="32.17" height="8" fill="#438eff"/><rect x="240.93" width="6.20" height="8" fill="#F05138"/><rect x="247.12" width="1.58" height="8" fill="#f34b7d"/><rect x="248.71" width="1.29" height="8" fill="#DA3434"/></g>
+  <circle cx="30" cy="86" r="5" fill="#858585"/>
+  <text x="40" y="90" class="lang">Limbo 47.28%</text>
+  <circle cx="30" cy="111" r="5" fill="#701516"/>
+  <text x="40" y="115" class="lang">Ruby 36.22%</text>
+  <circle cx="30" cy="136" r="5" fill="#438eff"/>
+  <text x="40" y="140" class="lang">Objective-C 12.87%</text>
+  <circle cx="180" cy="86" r="5" fill="#F05138"/>
+  <text x="190" y="90" class="lang">Swift 2.48%</text>
+  <circle cx="180" cy="111" r="5" fill="#f34b7d"/>
+  <text x="190" y="115" class="lang">C++ 0.63%</text>
+  <circle cx="180" cy="136" r="5" fill="#DA3434"/>
+  <text x="190" y="140" class="lang">CMake 0.52%</text>
+</svg>
