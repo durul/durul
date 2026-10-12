@@ -77,9 +77,7 @@ Platform and tooling bugs I have hit, reduced to a reproducible case, and report
 
 <div align="center">
 
-<a href="https://github.com/Pranesh-2005/github-readme-stats-fast">
-  <img src="https://github-readme-stats-fast.vercel.app/api/streak?username=durul&theme=react&hide_border=true&background=1F222E&ring=F85D7F&fire=F85D7F&currStreakLabel=F85D7F" alt="GitHub Streak"/>
-</a>
+<img src="./github-streak.svg" alt="GitHub Streak"/>
 
 </div>
 
@@ -89,7 +87,7 @@ Platform and tooling bugs I have hit, reduced to a reproducible case, and report
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=durul&theme=react-dark&hide_border=true&area=true&bg_color=1F222E&color=F85D7F&line=F8D866&point=FFFFFF" alt="Contribution Graph"/>
+<img src="./github-activity.svg" alt="Contribution Graph"/>
 
 </div>
 
