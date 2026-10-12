@@ -67,8 +67,9 @@ async function fetchDays() {
     .map(([date, count]) => ({ date, count }));
 }
 
-// Stats, languages and trophies count public activity only, like the hosted
-// cards they replace (those ran with a token that could not see private repos).
+// Stats and trophies count public activity only, like the hosted cards they
+// replace (those ran with a token that could not see private repos). The
+// languages card also includes private repos, which needs a token with `repo` scope.
 async function fetchProfile() {
   const yearStart = `${new Date().getUTCFullYear()}-01-01T00:00:00Z`;
   const data = await gql(`query($login: String!, $prQuery: String!, $issueQuery: String!, $yearStart: DateTime!) {
@@ -97,10 +98,10 @@ async function fetchProfile() {
   let after = null;
   do {
     const { user } = await gql(`query($login: String!, $after: String) { user(login: $login) {
-      repositories(first: 100, after: $after, ownerAffiliations: OWNER, privacy: PUBLIC) {
+      repositories(first: 100, after: $after, ownerAffiliations: OWNER) {
         pageInfo { hasNextPage endCursor }
         nodes {
-          isFork stargazerCount createdAt
+          isFork isPrivate stargazerCount createdAt
           languages(first: 10, orderBy: { field: SIZE, direction: DESC }) { edges { size node { name color } } }
         }
       }
@@ -110,6 +111,7 @@ async function fetchProfile() {
   } while (after);
 
   const u = data.user;
+  const publicRepos = repos.filter((r) => !r.isPrivate);
   return {
     name: u.name || USER,
     createdAt: u.createdAt,
@@ -124,8 +126,9 @@ async function fetchProfile() {
     // The trophy card counts private contributions too, as restricted contributions.
     commitsLastYear: u.lastYear.totalCommitContributions + u.lastYear.restrictedContributionsCount,
     reviews: u.lastYear.totalPullRequestReviewContributions,
-    stars: repos.reduce((sum, r) => sum + r.stargazerCount, 0),
-    repos,
+    stars: publicRepos.reduce((sum, r) => sum + r.stargazerCount, 0),
+    repos: publicRepos,
+    allRepos: repos,
   };
 }
 
@@ -335,7 +338,7 @@ function statsSvg(p) {
 `;
 }
 
-// Same as github-readme-stats top-langs: bytes across owned, non-fork repos.
+// Same as github-readme-stats top-langs: bytes across owned, non-fork repos (public and private).
 function topLanguages(repos, count = 6) {
   const sizes = new Map();
   for (const repo of repos.filter((r) => !r.isFork)) {
@@ -501,10 +504,11 @@ writeFileSync(`${OUT_DIR}/github-activity.svg`, activitySvg(days));
 
 const profile = await fetchProfile();
 writeFileSync(`${OUT_DIR}/github-stats.svg`, statsSvg(profile));
-writeFileSync(`${OUT_DIR}/github-top-langs.svg`, langsSvg(topLanguages(profile.repos)));
+writeFileSync(`${OUT_DIR}/github-top-langs.svg`, langsSvg(topLanguages(profile.allRepos)));
 const trophies = buildTrophies(profile);
 writeFileSync(`${OUT_DIR}/github-trophies.svg`, trophiesSvg(trophies));
 
 console.log(`streak: total=${streak.total} current=${streak.current.length} longest=${streak.longest.length}`);
 console.log(`stats: stars=${profile.stars} commits=${profile.commitsThisYear} prs=${profile.prs} issues=${profile.issues} contributedTo=${profile.contributedTo}`);
+console.log(`languages: ${profile.allRepos.length} repos (${profile.allRepos.length - profile.repos.length} private)`);
 console.log(`trophies: ${trophies.map((t) => `${t.title}=${t.rank}`).join(" ")}`);
