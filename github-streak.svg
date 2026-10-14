@@ -16,7 +16,7 @@
   <line x1="165" y1="28" x2="165" y2="170" stroke="rgba(228,226,226,0.3)"/>
   <line x1="330" y1="28" x2="330" y2="170" stroke="rgba(228,226,226,0.3)"/>
 
-  <text x="82.5" y="79" class="stat">9,987</text>
+  <text x="82.5" y="79" class="stat">9,996</text>
   <text x="82.5" y="115" class="label">Total Contributions</text>
   <text x="82.5" y="145" class="range">Jan 1, 2012 - Present</text>
 
