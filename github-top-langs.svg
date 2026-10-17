@@ -8,7 +8,7 @@
   <defs><clipPath id="bar"><rect width="250" height="8" rx="5"/></clipPath></defs>
   <rect width="300" height="165" rx="4.5" fill="#1F222E"/>
   <text x="25" y="35" class="header">Most Used Languages</text>
-  <g transform="translate(25, 55)" clip-path="url(#bar)"><rect x="0.00" width="161.12" height="8" fill="#F05138"/><rect x="161.12" width="27.05" height="8" fill="#3572A5"/><rect x="188.17" width="19.82" height="8" fill="#00B4AB"/><rect x="207.98" width="18.28" height="8" fill="#f1e05a"/><rect x="226.26" width="12.50" height="8" fill="#3178c6"/><rect x="238.76" width="11.24" height="8" fill="#438eff"/></g>
+  <g transform="translate(25, 55)" clip-path="url(#bar)"><rect x="0.00" width="161.13" height="8" fill="#F05138"/><rect x="161.13" width="27.04" height="8" fill="#3572A5"/><rect x="188.18" width="19.81" height="8" fill="#00B4AB"/><rect x="207.99" width="18.27" height="8" fill="#f1e05a"/><rect x="226.26" width="12.50" height="8" fill="#3178c6"/><rect x="238.76" width="11.24" height="8" fill="#438eff"/></g>
   <circle cx="30" cy="86" r="5" fill="#F05138"/>
   <text x="40" y="90" class="lang">Swift 64.45%</text>
   <circle cx="30" cy="111" r="5" fill="#3572A5"/>
