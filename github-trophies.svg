@@ -51,7 +51,7 @@
     <rect x="20" y="99" width="0.1" height="3" rx="1.5" fill="#F85D7F"/>
   </g>
   <g transform="translate(360, 12)">
-    <title>Commits: Deep Committer (2.0k commits)</title>
+    <title>Commits: Deep Committer (2.1k commits)</title>
     <rect width="110" height="110" rx="8" fill="#272B3A"/>
     <text x="55" y="17" class="title">Commits</text>
     <path d="M40,24 H70 V33 C70,44 63,51 55,51 C47,51 40,44 40,33 Z" fill="#F8D866"/>
@@ -60,9 +60,9 @@
     <rect x="45" y="57" width="20" height="5" rx="1.5" fill="#F8D866"/>
     <text x="55" y="37" class="rank" dominant-baseline="central" style="font-size: 12px">SS</text>
     <text x="55" y="78" class="name">Deep Committer</text>
-    <text x="55" y="92" class="caption">2.0k commits</text>
+    <text x="55" y="92" class="caption">2.1k commits</text>
     <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-    <rect x="20" y="99" width="1.6" height="3" rx="1.5" fill="#F85D7F"/>
+    <rect x="20" y="99" width="2.1" height="3" rx="1.5" fill="#F85D7F"/>
   </g>
   <g transform="translate(476, 12)">
     <title>Followers: Hyper Celebrity (317 followers)</title>
