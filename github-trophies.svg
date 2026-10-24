@@ -62,7 +62,7 @@
     <text x="55" y="78" class="name">Deep Committer</text>
     <text x="55" y="92" class="caption">2.1k commits</text>
     <rect x="20" y="99" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-    <rect x="20" y="99" width="2.9" height="3" rx="1.5" fill="#F85D7F"/>
+    <rect x="20" y="99" width="3.0" height="3" rx="1.5" fill="#F85D7F"/>
   </g>
   <g transform="translate(476, 12)">
     <title>Followers: Hyper Celebrity (317 followers)</title>
