@@ -24,8 +24,8 @@
     <text x="58" y="120.0" class="tick" text-anchor="end" dominant-baseline="middle">24</text>
   <line x1="70" y1="70.0" x2="970" y2="70.0" stroke="rgba(255,255,255,0.08)"/>
     <text x="58" y="70.0" class="tick" text-anchor="end" dominant-baseline="middle">32</text>
-  <path d="M70.0,270.0 L100.0,270.0 L130.0,207.5 L160.0,257.5 L190.0,207.5 L220.0,238.8 L250.0,245.0 L280.0,270.0 L310.0,270.0 L340.0,270.0 L370.0,257.5 L400.0,251.3 L430.0,220.0 L460.0,157.5 L490.0,270.0 L520.0,263.8 L550.0,207.5 L580.0,176.3 L610.0,220.0 L640.0,138.8 L670.0,163.8 L700.0,245.0 L730.0,232.5 L760.0,95.0 L790.0,207.5 L820.0,232.5 L850.0,151.3 L880.0,195.0 L910.0,270.0 L940.0,270.0 L970.0,251.3 L970.0,270 L70.0,270 Z" fill="url(#area)"/>
-  <path d="M70.0,270.0 L100.0,270.0 L130.0,207.5 L160.0,257.5 L190.0,207.5 L220.0,238.8 L250.0,245.0 L280.0,270.0 L310.0,270.0 L340.0,270.0 L370.0,257.5 L400.0,251.3 L430.0,220.0 L460.0,157.5 L490.0,270.0 L520.0,263.8 L550.0,207.5 L580.0,176.3 L610.0,220.0 L640.0,138.8 L670.0,163.8 L700.0,245.0 L730.0,232.5 L760.0,95.0 L790.0,207.5 L820.0,232.5 L850.0,151.3 L880.0,195.0 L910.0,270.0 L940.0,270.0 L970.0,251.3" fill="none" stroke="#F8D866" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M70.0,270.0 L100.0,270.0 L130.0,207.5 L160.0,257.5 L190.0,207.5 L220.0,238.8 L250.0,245.0 L280.0,270.0 L310.0,270.0 L340.0,270.0 L370.0,257.5 L400.0,251.3 L430.0,220.0 L460.0,157.5 L490.0,270.0 L520.0,263.8 L550.0,207.5 L580.0,176.3 L610.0,220.0 L640.0,138.8 L670.0,163.8 L700.0,245.0 L730.0,232.5 L760.0,95.0 L790.0,207.5 L820.0,232.5 L850.0,151.3 L880.0,176.3 L910.0,270.0 L940.0,270.0 L970.0,213.8 L970.0,270 L70.0,270 Z" fill="url(#area)"/>
+  <path d="M70.0,270.0 L100.0,270.0 L130.0,207.5 L160.0,257.5 L190.0,207.5 L220.0,238.8 L250.0,245.0 L280.0,270.0 L310.0,270.0 L340.0,270.0 L370.0,257.5 L400.0,251.3 L430.0,220.0 L460.0,157.5 L490.0,270.0 L520.0,263.8 L550.0,207.5 L580.0,176.3 L610.0,220.0 L640.0,138.8 L670.0,163.8 L700.0,245.0 L730.0,232.5 L760.0,95.0 L790.0,207.5 L820.0,232.5 L850.0,151.3 L880.0,176.3 L910.0,270.0 L940.0,270.0 L970.0,213.8" fill="none" stroke="#F8D866" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
   <circle cx="70.0" cy="270.0" r="3.5" fill="#FFFFFF"><title>Sep 24, 2026: 0</title></circle>
   <circle cx="100.0" cy="270.0" r="3.5" fill="#FFFFFF"><title>Sep 25, 2026: 0</title></circle>
   <circle cx="130.0" cy="207.5" r="3.5" fill="#FFFFFF"><title>Sep 26, 2026: 10</title></circle>
@@ -53,10 +53,10 @@
   <circle cx="790.0" cy="207.5" r="3.5" fill="#FFFFFF"><title>Oct 18, 2026: 10</title></circle>
   <circle cx="820.0" cy="232.5" r="3.5" fill="#FFFFFF"><title>Oct 19, 2026: 6</title></circle>
   <circle cx="850.0" cy="151.3" r="3.5" fill="#FFFFFF"><title>Oct 20, 2026: 19</title></circle>
-  <circle cx="880.0" cy="195.0" r="3.5" fill="#FFFFFF"><title>Oct 21, 2026: 12</title></circle>
+  <circle cx="880.0" cy="176.3" r="3.5" fill="#FFFFFF"><title>Oct 21, 2026: 15</title></circle>
   <circle cx="910.0" cy="270.0" r="3.5" fill="#FFFFFF"><title>Oct 22, 2026: 0</title></circle>
   <circle cx="940.0" cy="270.0" r="3.5" fill="#FFFFFF"><title>Oct 23, 2026: 0</title></circle>
-  <circle cx="970.0" cy="251.3" r="3.5" fill="#FFFFFF"><title>Oct 24, 2026: 3</title></circle>
+  <circle cx="970.0" cy="213.8" r="3.5" fill="#FFFFFF"><title>Oct 24, 2026: 9</title></circle>
   <text x="70.0" y="292" class="tick" text-anchor="middle">24</text>
   <text x="100.0" y="292" class="tick" text-anchor="middle">25</text>
   <text x="130.0" y="292" class="tick" text-anchor="middle">26</text>
