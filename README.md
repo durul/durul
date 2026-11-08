@@ -133,7 +133,7 @@ I contribute across Apple platforms, visionOS, Swift, developer tooling, AI/ML i
 
 </details>
 
-## 🐞 Bug Reports Filed Upstream
+## 🐞 Bug Reports & Upstream Feedback
 
 Platform and tooling bugs I have hit, reduced to a reproducible case, and reported to the vendor, or backed with diagnostic data and design input on existing reports.
 
