@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="165" viewBox="0 0 300 165" role="img" aria-label="Most Used Languages">
-  <title>Most Used Languages: Swift 65.94%, Python 11.65%, JavaScript 7.56%, Dart 6.97%, TypeScript 4.69%, Objective-C 3.18%</title>
+  <title>Most Used Languages: Swift 65.99%, Python 11.63%, JavaScript 7.55%, Dart 6.96%, TypeScript 4.69%, Objective-C 3.18%</title>
   <style>
     text { font-family: 'Segoe UI', Ubuntu, -apple-system, 'Helvetica Neue', sans-serif; }
     .header { font-size: 18px; font-weight: 600; fill: #F85D7F; }
@@ -8,15 +8,15 @@
   <defs><clipPath id="bar"><rect width="250" height="8" rx="5"/></clipPath></defs>
   <rect width="300" height="165" rx="4.5" fill="#1F222E"/>
   <text x="25" y="35" class="header">Most Used Languages</text>
-  <g transform="translate(25, 55)" clip-path="url(#bar)"><rect x="0.00" width="164.85" height="8" fill="#F05138"/><rect x="164.85" width="29.12" height="8" fill="#3572A5"/><rect x="193.98" width="18.91" height="8" fill="#f1e05a"/><rect x="212.89" width="17.42" height="8" fill="#00B4AB"/><rect x="230.31" width="11.73" height="8" fill="#3178c6"/><rect x="242.04" width="7.96" height="8" fill="#438eff"/></g>
+  <g transform="translate(25, 55)" clip-path="url(#bar)"><rect x="0.00" width="164.99" height="8" fill="#F05138"/><rect x="164.99" width="29.08" height="8" fill="#3572A5"/><rect x="194.07" width="18.88" height="8" fill="#f1e05a"/><rect x="212.94" width="17.40" height="8" fill="#00B4AB"/><rect x="230.34" width="11.72" height="8" fill="#3178c6"/><rect x="242.06" width="7.94" height="8" fill="#438eff"/></g>
   <circle cx="30" cy="86" r="5" fill="#F05138"/>
-  <text x="40" y="90" class="lang">Swift 65.94%</text>
+  <text x="40" y="90" class="lang">Swift 65.99%</text>
   <circle cx="30" cy="111" r="5" fill="#3572A5"/>
-  <text x="40" y="115" class="lang">Python 11.65%</text>
+  <text x="40" y="115" class="lang">Python 11.63%</text>
   <circle cx="30" cy="136" r="5" fill="#f1e05a"/>
-  <text x="40" y="140" class="lang">JavaScript 7.56%</text>
+  <text x="40" y="140" class="lang">JavaScript 7.55%</text>
   <circle cx="180" cy="86" r="5" fill="#00B4AB"/>
-  <text x="190" y="90" class="lang">Dart 6.97%</text>
+  <text x="190" y="90" class="lang">Dart 6.96%</text>
   <circle cx="180" cy="111" r="5" fill="#3178c6"/>
   <text x="190" y="115" class="lang">TypeScript 4.69%</text>
   <circle cx="180" cy="136" r="5" fill="#438eff"/>
